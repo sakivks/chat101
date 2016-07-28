@@ -2,7 +2,21 @@ const path = require('path');
 const app = require('koa')();
 const logger = require('koa-logger');
 const favicon = require('koa-favicon');
-var serve = require('koa-static');
+const serve = require('koa-static');
+
+// WEBPACK DEV middleware
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
+const webpackDevMiddleware = require('koa-webpack-dev-middleware');
+const webpackHotMiddleware = require('koa-webpack-hot-middleware');
+const compiler = webpack(webpackConfig);
+
+app.use(webpackDevMiddleware(compiler, {
+  noInfo: true, publicPath: webpackConfig.output.publicPath,
+}));
+app.use(webpackHotMiddleware(compiler));
+// WEBPACK DEV middleware
+
 
 app.use(logger());
 
