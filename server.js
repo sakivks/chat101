@@ -17,13 +17,11 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 // WEBPACK DEV middleware
 
-
+// Standard, bare-minimum middlewares
 app.use(logger());
-
 app.use(serve('.'));
-
-
 app.use(favicon(path.join(__dirname, '/public/favicon.ico')));
+
 
 app.listen(process.argv[2] || 4000);
 console.log(`Server listening on ${process.argv[2] || 4000}`);
