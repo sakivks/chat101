@@ -4,7 +4,7 @@ Simple login and chat app
   - [X] logger
   - [X] favicon
   - [X] router
-- [ ] Webpack  __*Front End*__
-- [ ] Material UI basics  __*UI*__
+- [X] Webpack  __*Front End*__
+- [X] Material UI basics  __*UI*__
 - [ ] Passport  __*Authentication*__
 - [ ] Sockets  __*Chat*__
