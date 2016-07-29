@@ -6,11 +6,16 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginDialog from './LoginDialog';
+import AppBarExampleIconMenu from './AppBarExampleIconMenu';
+
 
 const styles = {
   container: {
     textAlign: 'center',
     paddingTop: 200,
+  },
+  buttonStyle: {
+    margin: 20,
   },
 };
 
@@ -55,15 +60,22 @@ class Main extends Component {
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
-          <LoginDialog open={this.state.open} />
-          <h1>material-ui</h1>
-          <h2>example project</h2>
-          <RaisedButton
-            label="Super Secret Password"
-            secondary
-            onTouchTap={this.handleTouchTap}
-          />
+        <div>
+          <AppBarExampleIconMenu title="Chat101" />
+          <div style={styles.container}>
+            <LoginDialog open={this.state.open} />
+            <RaisedButton
+              label="Register"
+              secondary
+              style={styles.buttonStyle}
+            />
+            <RaisedButton
+              label="Login"
+              primary
+              onTouchTap={this.handleTouchTap}
+              style={styles.buttonStyle}
+            />
+          </div>
         </div>
       </MuiThemeProvider>
       );
