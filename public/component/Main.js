@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginDialog from './LoginDialog';
-import AppBarExampleIconMenu from './AppBarExampleIconMenu';
+import ApplicationBar from './ApplicationBar';
 
 
 const styles = {
@@ -61,7 +61,7 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <AppBarExampleIconMenu title="Chat101" />
+          <ApplicationBar title="Chat101" />
           <div style={styles.container}>
             <LoginDialog open={this.state.open} />
             <RaisedButton

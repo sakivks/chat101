@@ -1,0 +1,5 @@
+{
+  "mongo": {
+    "url": "mongodb://admin:admin@kahana.mongohq.com:10040/node_v1"
+  }
+}

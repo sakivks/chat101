@@ -3,14 +3,21 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    'whatwg-fetch',
-    './public/index',
-  ],
+  entry: {
+    index: [
+      'webpack-hot-middleware/client',
+      'whatwg-fetch',
+      './public/index',
+    ],
+    userHome: [
+      'webpack-hot-middleware/client',
+      'whatwg-fetch',
+      './public/userHome',
+    ],
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle_[name].js',
     publicPath: '/static/',
   },
   plugins: [

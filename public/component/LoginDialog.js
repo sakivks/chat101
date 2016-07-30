@@ -42,9 +42,8 @@ export default class LoginDialog extends Component {
             onTouchTap={this.handleClose}
           />,
           <FlatButton
-            label="Confirm"
+            label="Login"
             primary
-            keyboardFocused
             onTouchTap={this.login}
           />,
         ]}
