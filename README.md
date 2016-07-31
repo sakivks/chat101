@@ -19,5 +19,5 @@ Simple login and chat app
   - [ ] user's home page
     - [ ] UI
     - [ ] functionality
-- [ ] Passport  __*Authentication*__
+- [ ] Passport (had enough war with passport), JWT will be used now going forward  __*Authentication*__
 - [ ] Sockets  __*Chat*__
