@@ -41,7 +41,6 @@ export default class LoginDialog extends Component {
   };
 
   login = () => {
-
     fetch('/login', {
       method: 'POST',
       headers: {
