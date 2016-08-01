@@ -41,24 +41,16 @@ export default class LoginDialog extends Component {
   };
 
   login = () => {
-    // const formData = new FormData();
-    // formData.append('username', this.state.username);
-    // formData.append('password', this.state.password);
-    // console.log(formData);
-    // console.log(this.state.username);
-    // console.log(this.state.password);
 
     fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        // 'Content-Type': 'application/json',
       },
-      body: encodeURI(`username=${this.state.username}&password=${this.state.password}`),
-      // body: {
-      //   username: this.state.username,
-      //   password: this.state.password,
-      // },
+      body: {
+        username: this.state.username,
+        password: this.state.password,
+      },
     });
 
     this.setState({
