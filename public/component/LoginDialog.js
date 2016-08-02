@@ -2,7 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+// import Colors from 'material-ui/styles/colors';
+import { deepOrange500 } from 'material-ui/styles/colors';
+
 import 'whatwg-fetch';
+
+const styles = {
+  errorMessageButton: {
+    color: deepOrange500,
+    marginLeft: '50%',
+  },
+};
 
 export default class LoginDialog extends Component {
 
@@ -14,6 +24,7 @@ export default class LoginDialog extends Component {
     open: this.props.open,
     username: '',
     password: '',
+    errorMessage: '',
   };
 
   componentWillReceiveProps = (nextProps) => {
@@ -25,6 +36,7 @@ export default class LoginDialog extends Component {
   handleClose = () => {
     this.setState({
       open: false,
+      errorMessage: false,
     });
   };
 
@@ -44,16 +56,25 @@ export default class LoginDialog extends Component {
     fetch('/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
-      body: {
+      body: JSON.stringify({
         username: this.state.username,
         password: this.state.password,
-      },
-    });
-
-    this.setState({
-      open: false,
+      }),
+    })
+    .then((response) => response.json())
+    .then((resp) => {
+      if (resp.success) {
+        this.setState({
+          open: false,
+          errorMessage: '',
+        });
+      } else {
+        this.setState({
+          errorMessage: resp.info,
+        });
+      }
     });
   }
 
@@ -63,6 +84,11 @@ export default class LoginDialog extends Component {
         title="Login"
         titleClassName="LoginModalTitle"
         actions={[
+          <FlatButton
+            label={this.state.errorMessage}
+            disabled
+            style={styles.errorMessageButton}
+          />,
           <FlatButton
             label="Cancel"
             onTouchTap={this.handleClose}

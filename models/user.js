@@ -9,10 +9,6 @@ var userSchema = new Schema({
 });
 
 userSchema.methods.validPassword = function (recievedPassword) {
-  // var greeting = this.name
-  //   ? "Meow name is " + this.name
-  //   : "I don't have a name";
-  // console.log(greeting);
   if (this.password === recievedPassword) {
     return true;
   }

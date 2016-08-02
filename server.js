@@ -7,6 +7,7 @@ const config = JSON.parse(fs.readFileSync('./config/config.json', 'utf-8'));
 
 // Database
 const mongoose = require('mongoose');
+mongoose.Promise = Promise;
 mongoose.connect(config.mongo.url);
 console.log('connecting to MongoDB...');
 const db = mongoose.connection;
@@ -25,7 +26,6 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
-
 // Logger, favicon and bodyparser middlewares
 const logger = require('koa-logger');
 const favicon = require('koa-favicon');
@@ -34,15 +34,9 @@ app.use(logger());
 app.use(favicon(path.join(__dirname, '/public/favicon.ico')));
 app.use(bodyParser());
 
-// app.use(function* (next) {
-//   console.log('in body ->' + this.body);
-//   console.log('in data ->' + this.data);
-//   yield next;
-//   console.log('out ->' + util.inspect(this.state, false, null));
-// });
 
 // Authentication
-require('./src/auth');
+// require('./src/auth');
 const router = require('./src/routes');
 
 
