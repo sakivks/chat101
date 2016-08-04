@@ -1,17 +1,17 @@
 # chat101
 Simple login and chat app
-- [ ] Koa middleware up and running  __*Server*__
+- [X] Koa middleware up and running  __*Server*__
   - [X] logger
   - [X] favicon
-  - [ ] router
+  - [X] router
 - [X] Webpack  __*Front End*__
 - [X] Material UI platform  __*UI*__
 - [ ] Front-End UI screens
-  - [ ] site's starting page
-    - [ ] UI
-    - [ ] functionality
   - [ ] login page
     - [X] UI
+    - [ ] functionality
+  - [ ] site's starting page
+    - [ ] UI
     - [ ] functionality
   - [ ] register page
     - [ ] UI
@@ -20,4 +20,6 @@ Simple login and chat app
     - [ ] UI
     - [ ] functionality
 - [ ] ~~Passport (had enough war with passport),~~ JWT will be used now going forward  __*Authentication*__
+  - [X] Username and passport validation and responding back with response
+  - [ ] Loading the user homepage
 - [ ] Sockets  __*Chat*__
