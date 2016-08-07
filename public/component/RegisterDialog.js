@@ -3,18 +3,11 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 // import Colors from 'material-ui/styles/colors';
-import { deepOrange500 } from 'material-ui/styles/colors';
+// import { deepOrange500 } from 'material-ui/styles/colors';
 
 import 'whatwg-fetch';
 
-const styles = {
-  errorMessageButton: {
-    color: deepOrange500,
-    marginLeft: '50%',
-  },
-};
-
-export default class LoginDialog extends Component {
+export default class RegisterDialog extends Component {
 
   static propTypes = {
     open: PropTypes.bool.isRequired,
@@ -22,9 +15,10 @@ export default class LoginDialog extends Component {
 
   state = {
     open: this.props.open,
+    name: '',
+    emailId: '',
     username: '',
     password: '',
-    errorMessage: '',
   };
 
   componentWillReceiveProps = (nextProps) => {
@@ -40,6 +34,18 @@ export default class LoginDialog extends Component {
     });
   };
 
+  handleNameChange = (e) => {
+    this.setState({
+      name: e.target.value,
+    });
+  };
+
+  handleEmailIdChange = (e) => {
+    this.setState({
+      emailId: e.target.value,
+    });
+  };
+
   handleUsernameChange = (e) => {
     this.setState({
       username: e.target.value,
@@ -52,13 +58,15 @@ export default class LoginDialog extends Component {
     });
   };
 
-  login = () => {
-    fetch('/login', {
+  register = () => {
+    fetch('/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        name: this.state.name,
+        emailId: this.state.emailId,
         username: this.state.username,
         password: this.state.password,
       }),
@@ -70,8 +78,6 @@ export default class LoginDialog extends Component {
           open: false,
           errorMessage: '',
         });
-        document.cookie = `auth=${resp.auth};${document.cookie}`;
-        window.location.replace('/app');
       } else {
         this.setState({
           errorMessage: resp.info,
@@ -83,13 +89,12 @@ export default class LoginDialog extends Component {
   render() {
     return (
       <Dialog
-        title="Login"
+        title="Register"
         titleClassName="LoginModalTitle"
         actions={[
           <FlatButton
             label={this.state.errorMessage}
             disabled
-            style={styles.errorMessageButton}
           />,
           <FlatButton
             label="Cancel"
@@ -98,13 +103,29 @@ export default class LoginDialog extends Component {
           <FlatButton
             label="Login"
             primary
-            onTouchTap={this.login}
+            onTouchTap={this.register}
           />,
         ]}
         modal={false}
         open={this.state.open}
         onRequestClose={this.handleClose}
       >
+        <TextField
+          floatingLabelText="Name"
+          hintText="Vikas"
+          name="name"
+          value={this.state.name}
+          onChange={this.handleNameChange}
+          fullWidth
+        />
+        <TextField
+          floatingLabelText="EmailId"
+          hintText="abc@xyz.com"
+          name="emailId"
+          value={this.state.emailId}
+          onChange={this.handleEmailIdChange}
+          fullWidth
+        />
         <TextField
           floatingLabelText="Username"
           hintText="username"

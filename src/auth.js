@@ -6,13 +6,13 @@ const auth = {
       User.findOne({ username: credential.username })
         .then((user) => {
           if (user === null) {
-            console.log('user not present');
+            console.log(`user not found : ${credential.username}`);
             reject({ info: 'Username incorrect' });
           } else if (user.validPassword(credential.password)) {
-            console.log('Authenticated');
+            console.log(`Authenticated : ${credential.username}`);
             resolve();
           } else {
-            console.log('Invalid Password');
+            console.log(`Invalid Password : ${credential.username}`);
             reject({ info: 'Password incorrect' });
           }
         }).catch((err) => {

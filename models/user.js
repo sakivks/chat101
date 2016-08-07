@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var userSchema = new Schema({
+  name: String,
+  emailId: String,
   username: String,
   password: String,
-  email: String,
-  gender: String,
 });
 
 userSchema.methods.validPassword = function (recievedPassword) {

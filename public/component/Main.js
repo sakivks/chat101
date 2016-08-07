@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginDialog from './LoginDialog';
+import RegisterDialog from './RegisterDialog';
 import ApplicationBar from './ApplicationBar';
 
 
@@ -26,53 +27,45 @@ const muiTheme = getMuiTheme({
 });
 
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
 
-    this.state = {
-      open: true,
-    };
-  }
+  state = {
+    loginOpen: true,
+    registerOpen: false,
+  };
 
-  handleRequestClose() {
+
+  openRegister = () => {
     this.setState({
-      open: false,
+      registerOpen: true,
+      loginOpen: false,
     });
-  }
+  };
 
-  handleTouchTap() {
+  openLogin = () => {
     this.setState({
-      open: true,
+      loginOpen: true,
+      registerOpen: false,
     });
-    console.log(this.state);
-  }
+  };
 
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary
-        onTouchTap={this.handleRequestClose}
-      />
-    );
-
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <ApplicationBar title="Chat101" />
           <div style={styles.container}>
-            <LoginDialog open={this.state.open} />
+            <LoginDialog open={this.state.loginOpen} />
+            <RegisterDialog open={this.state.registerOpen} />
             <RaisedButton
               label="Register"
               secondary
+              onTouchTap={this.openRegister}
               style={styles.buttonStyle}
             />
             <RaisedButton
               label="Login"
               primary
-              onTouchTap={this.handleTouchTap}
+              onTouchTap={this.openLogin}
               style={styles.buttonStyle}
             />
           </div>

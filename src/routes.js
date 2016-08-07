@@ -1,6 +1,8 @@
 const router = require('koa-router')();
 const fs = require('fs');
 const auth = require('./auth');
+const User = require('../models/user.js');
+const jwt = require('jsonwebtoken');
 
 router.get('/', function*() {
   this.type = 'html';
@@ -8,15 +10,16 @@ router.get('/', function*() {
 });
 
 router.get('/app', function*() {
+  console.log(jwt.verify(this.cookies.get('auth'), 'LoveUJenkins'));
   this.type = 'html';
   this.body = fs.readFileSync('public/userHome.html', 'utf8');
 });
 
 router.post('/login', function*() {
-  console.log(this.request.body);
   yield auth.verify(this.request.body)
   .then(() => {
-    this.body = { success: true };
+    const token = jwt.sign({ username: this.request.body.username }, 'LoveUJenkins');
+    this.body = { success: true, auth: token };
   })
   .then(null, (err) => {
     this.body = {
@@ -32,5 +35,23 @@ router.post('/login', function*() {
     console.log(err);
   });
 });
+
+router.post('/register', function*() {
+  const user = new User(this.request.body);
+  yield user.save()
+  .then(() => {
+    this.body = {
+      success: true,
+    };
+  })
+  .catch((err) => {
+    this.body = {
+      success: false,
+      info: err.info,
+    };
+    console.log(err);
+  });
+});
+
 
 module.exports = router;
