@@ -16,11 +16,12 @@ Simple login and chat app
   - [X] register page
     - [X] UI
     - [X] basic functionality
-    - [ ] validations 
+    - [ ] validations, uniqueness check
   - [X] user's home page
     - [X] UI
     - [X] functionality
 - [X] JWT, ~~Passport js~~   __*Authentication*__
+  - [X] password encryption
   - [X] Username and passport validation and responding back with response
   - [X] Loading the user homepage
 - [ ] Sockets  __*Chat*__
