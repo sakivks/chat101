@@ -20,7 +20,7 @@ Simple login and chat app
   - [ ] user's home page
     - [X] UI
     - [ ] functionality
-- [ ] ~~Passport (had enough war with passport),~~ JWT will be used now going forward  __*Authentication*__
+- [X] ~~Passport (had enough war with passport),~~ JWT will be used now going forward  __*Authentication*__
   - [X] Username and passport validation and responding back with response
-  - [ ] Loading the user homepage
+  - [X] Loading the user homepage
 - [ ] Sockets  __*Chat*__
