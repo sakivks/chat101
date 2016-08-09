@@ -4,8 +4,9 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 // import Colors from 'material-ui/styles/colors';
 // import { deepOrange500 } from 'material-ui/styles/colors';
+import util from '.././util';
 
-import 'whatwg-fetch';
+// import 'whatwg-fetch';
 
 export default class RegisterDialog extends Component {
 
@@ -59,7 +60,7 @@ export default class RegisterDialog extends Component {
   };
 
   register = () => {
-    fetch('/register', {
+    util.fetch('/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

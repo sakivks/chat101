@@ -4,8 +4,8 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 // import Colors from 'material-ui/styles/colors';
 import { deepOrange500 } from 'material-ui/styles/colors';
-
-import 'whatwg-fetch';
+import util from '.././util';
+// import 'whatwg-fetch';
 
 const styles = {
   errorMessageButton: {
@@ -53,7 +53,7 @@ export default class LoginDialog extends Component {
   };
 
   login = () => {
-    fetch('/login', {
+    util.fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -18,7 +18,11 @@ class UserDashBoard extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <ApplicationBar title={`Welcome ${localStorage.getItem('user.name')}`} />
+          <ApplicationBar
+            title={`Welcome ${localStorage.getItem('user.name')}`}
+            action="Logout"
+            actionDisabled={false}
+          />
         </div>
       </MuiThemeProvider>
       );

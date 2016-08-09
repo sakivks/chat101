@@ -52,7 +52,7 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <ApplicationBar title="Chat101" />
+          <ApplicationBar title="Chat101" action="sakiv" actionDisabled />
           <div style={styles.container}>
             <LoginDialog open={this.state.loginOpen} />
             <RegisterDialog open={this.state.registerOpen} />

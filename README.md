@@ -6,7 +6,7 @@ Simple login and chat app
   - [X] router
 - [X] Webpack  __*Front End*__
 - [X] Material UI platform  __*UI*__
-- [ ] Front-End UI screens
+- [X] Front-End UI screens
   - [X] login page
     - [X] UI
     - [X] functionality
@@ -17,10 +17,12 @@ Simple login and chat app
     - [X] UI
     - [X] basic functionality
     - [ ] validations 
-  - [ ] user's home page
+  - [X] user's home page
     - [X] UI
-    - [ ] functionality
-- [X] ~~Passport (had enough war with passport),~~ JWT will be used now going forward  __*Authentication*__
+    - [X] functionality
+- [X] JWT, ~~Passport js~~   __*Authentication*__
   - [X] Username and passport validation and responding back with response
   - [X] Loading the user homepage
 - [ ] Sockets  __*Chat*__
+  - [ ] building UI component
+  - [ ] adding chat functionality
