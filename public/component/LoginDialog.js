@@ -71,6 +71,7 @@ export default class LoginDialog extends Component {
           errorMessage: '',
         });
         document.cookie = `auth=${resp.auth};${document.cookie}`;
+        localStorage.setItem('user.name', resp.user.name);
         window.location.replace('/app');
       } else {
         this.setState({

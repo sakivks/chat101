@@ -10,7 +10,7 @@ const auth = {
             reject({ info: 'Username incorrect' });
           } else if (user.validPassword(credential.password)) {
             console.log(`Authenticated : ${credential.username}`);
-            resolve();
+            resolve(user);
           } else {
             console.log(`Invalid Password : ${credential.username}`);
             reject({ info: 'Password incorrect' });

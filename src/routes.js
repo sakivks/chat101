@@ -17,9 +17,9 @@ router.get('/app', function*() {
 
 router.post('/login', function*() {
   yield auth.verify(this.request.body)
-  .then(() => {
+  .then((user) => {
     const token = jwt.sign({ username: this.request.body.username }, 'LoveUJenkins');
-    this.body = { success: true, auth: token };
+    this.body = { success: true, auth: token, user };
   })
   .then(null, (err) => {
     this.body = {
