@@ -8,17 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 // import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 // import NavigationClose from 'material-ui/svg-icons/navigation/close';
-
-function deleteAllCookies() {
-  const cookies = document.cookie.split(';');
-
-  for (let i = 0; i < cookies.length; i++) {
-    const cookie = cookies[i];
-    const eqPos = cookie.indexOf('=');
-    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-  }
-}
+import util from '.././util';
 
 
 class AppBarExampleIconMenu extends Component {
@@ -30,9 +20,7 @@ class AppBarExampleIconMenu extends Component {
   };
 
   logout = () => {
-    deleteAllCookies();
-    localStorage.removeItem('user.name');
-    window.location.replace('/');
+    util.clearSession();
   };
 
   render() {

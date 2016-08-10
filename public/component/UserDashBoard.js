@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ApplicationBar from './ApplicationBar';
+import util from '.././util';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -14,12 +15,19 @@ const muiTheme = getMuiTheme({
 });
 
 class UserDashBoard extends Component {
+  getUsername = () => {
+    if (localStorage.getItem('user.name')) {
+      return localStorage.getItem('user.name');
+    }
+    util.clearSession();
+  };
+
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <ApplicationBar
-            title={`Welcome ${localStorage.getItem('user.name')}`}
+            title={`Welcome ${this.getUsername()}`}
             action="Logout"
             actionDisabled={false}
           />
