@@ -102,7 +102,7 @@ export default class RegisterDialog extends Component {
             onTouchTap={this.handleClose}
           />,
           <FlatButton
-            label="Login"
+            label="Register"
             primary
             onTouchTap={this.register}
           />,
