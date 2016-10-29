@@ -5,14 +5,14 @@ const User = require('../models/user.js');
 const jwt = require('jsonwebtoken');
 
 router.get('/', function*() {
-  try {
-    if ((this.cookies.get('auth') !== undefined) &&
-      jwt.verify(this.cookies.get('auth'), 'LoveUJenkins').username) {
-      this.redirect('/app');
-    }
-  } catch (err) {
-    console.error(err.message);
-  }
+  // try {
+  //   if ((this.cookies.get('auth') !== undefined) &&
+  //     jwt.verify(this.cookies.get('auth'), 'LoveUJenkins').username) {
+  //     this.redirect('/app');
+  //   }
+  // } catch (err) {
+  //   console.error(err.message);
+  // }
   this.type = 'html';
   this.body = fs.readFileSync('public/index.html', 'utf8');
 });
