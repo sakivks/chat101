@@ -16,6 +16,11 @@ const util = {
     localStorage.removeItem('user.name');
     window.location.replace('/');
   },
+  config: {
+    fbAppId: 175573409567618,
+    loginRedirect: 'http://nborkswaoa.localtunnel.me/fbR',
+    scope: 'public_profile,email,user_friends,user_birthday,user_about_me,read_custom_friendlists',
+  },
 };
 
 export default util;

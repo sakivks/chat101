@@ -1,7 +1,10 @@
 const path = require('path');
 const fs = require('fs');
+const Koa = require('koa');
+const convert = require('koa-convert');
+// const co = require('co');
 // var util = require('util');
-const app = require('koa')();
+const app = new Koa();
 const config = JSON.parse(fs.readFileSync('./config/config.json', 'utf-8'));
 
 
@@ -21,10 +24,10 @@ const webpackConfig = require('./webpack.config');
 const webpackDevMiddleware = require('koa-webpack-dev-middleware');
 const webpackHotMiddleware = require('koa-webpack-hot-middleware');
 const compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler, {
+app.use(convert(webpackDevMiddleware(compiler, {
   noInfo: true, publicPath: webpackConfig.output.publicPath,
-}));
-app.use(webpackHotMiddleware(compiler));
+})));
+app.use(convert(webpackHotMiddleware(compiler)));
 
 // Logger, favicon and bodyparser middlewares
 const logger = require('koa-logger');
@@ -35,19 +38,19 @@ app.use(favicon(path.join(__dirname, '/public/favicon.ico')));
 app.use(bodyParser());
 
 
-// Authentication
-// require('./src/auth');
-const router = require('./src/routes');
-
-
 // Routes
 // const serve = require('koa-static');
 // app.use(serve('.'));
 
 
+// Authentication
+// require('./src/auth');
+const router = require('./src/routes');
+
 app
   .use(router.routes())
   .use(router.allowedMethods());
+
 
 app.listen(process.argv[2] || 4000);
 console.log(`Server listening on ${process.argv[2] || 4000}`);

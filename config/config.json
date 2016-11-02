@@ -1,5 +1,10 @@
 {
   "mongo": {
     "url": "mongodb://admin:admin@kahana.mongohq.com:10040/node_v1"
+  },
+  "oAuth": {
+    "fbAppId": 175573409567618,
+    "loginRedirect": "http://nborkswaoa.localtunnel.me/fbR",
+    "appSecret":"43ed76675a4a9c6c92cab7a9cf9e0576"
   }
 }
