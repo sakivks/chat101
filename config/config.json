@@ -4,7 +4,7 @@
   },
   "oAuth": {
     "fbAppId": 175573409567618,
-    "loginRedirect": "http://nborkswaoa.localtunnel.me/fbR",
+    "loginRedirect": "http://localhost:4000/fbR",
     "appSecret":"43ed76675a4a9c6c92cab7a9cf9e0576"
   }
 }
