@@ -8,7 +8,7 @@ module.exports = {
       'webpack-hot-middleware/client',
       'whatwg-fetch',
       './public/index',
-    ]
+    ],
     // ,
     // userHome: [
     //   'webpack-hot-middleware/client',

@@ -52,5 +52,5 @@ app
   .use(router.allowedMethods());
 
 
-app.listen(process.argv[2] || 4000);
-console.log(`Server listening on ${process.argv[2] || 4000}`);
+app.listen(process.env.port || process.argv[2] || 4000);
+console.log(`Server listening on ${process.env.port || process.argv[2] || 4000}`);
