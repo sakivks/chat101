@@ -4,7 +4,7 @@
   },
   "oAuth": {
     "fbAppId": 175573409567618,
-    "loginRedirect": "https://chat101.herokuapp.com",
+    "loginRedirect": "https://chat101.herokuapp.com/fbR",
     "appSecret":"43ed76675a4a9c6c92cab7a9cf9e0576"
   }
 }
