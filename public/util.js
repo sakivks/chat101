@@ -18,7 +18,7 @@ const util = {
   },
   config: {
     fbAppId: 175573409567618,
-    loginRedirect: 'http://localhost:4000/fbR',
+    loginRedirect: 'https://chat101.herokuapp.com',
     scope: 'public_profile,email,user_friends,user_birthday,user_about_me,read_custom_friendlists',
   },
 };
