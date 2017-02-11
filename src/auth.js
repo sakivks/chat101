@@ -3,8 +3,9 @@ const User = require('../models/user.js');
 const auth = {
   verify(credential) {
     return new Promise((resolve, reject) => {
-      User.findOne({ username: credential.username })
-        .then((user) => {
+      User
+        .findOne({ username: credential.username })
+        .then(user => {
           if (user === null) {
             console.log(`user not found : ${credential.username}`);
             reject({ info: 'Username incorrect' });
@@ -15,7 +16,8 @@ const auth = {
             console.log(`Invalid Password : ${credential.username}`);
             reject({ info: 'Password incorrect' });
           }
-        }).catch((err) => {
+        })
+        .catch(err => {
           console.log(`Error in fetching user from DB for auth: \n${err}`);
           reject({ info: 'some error while fetching from DB' });
         });
@@ -24,3 +26,4 @@ const auth = {
 };
 
 module.exports = auth;
+

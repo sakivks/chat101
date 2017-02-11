@@ -8,7 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LoginDialog from './LoginDialog';
 import RegisterDialog from './RegisterDialog';
 import ApplicationBar from './ApplicationBar';
-import util from '.././util';
+// import util from '.././util';
 
 const styles = {
   container: {
